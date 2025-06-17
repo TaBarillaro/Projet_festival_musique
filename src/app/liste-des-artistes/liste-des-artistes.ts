@@ -14,5 +14,9 @@ export class ListeDesArtistes {
     {nom: 'Giulia Rossi', image: "/images/artiste2.jpg"},
     {nom: 'Marco Bianchi', image: "/images/artiste1.jpg"},
     {nom: 'Elena Ferraro', image: "/images/artiste3.jpg"},
-  ]
+  ];
+
+  supprimerArtiste(index: number) {
+    this.artistes.splice(index, 1);
+  }
 }

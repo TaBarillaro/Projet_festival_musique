@@ -10,6 +10,7 @@
             <li *ngFor="let artiste of artistes; let i = index">
                 <p>{{ artiste.nom }}</p>
                 <img [src]="artiste.image" [alt]="artiste.nom" width="100" />
+                <button style="background: red; color: white;" (click)="supprimerArtiste(i)">Supprimer</button>
             </li>
         </ul>
 </body>
