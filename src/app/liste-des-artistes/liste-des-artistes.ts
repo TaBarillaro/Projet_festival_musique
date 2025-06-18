@@ -11,9 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class ListeDesArtistes {
   artistes = [
-    {nom: 'Giulia Rossi', image: "/images/artiste2.jpg"},
-    {nom: 'Marco Bianchi', image: "/images/artiste1.jpg"},
-    {nom: 'Elena Ferraro', image: "/images/artiste3.jpg"},
+    {id: 1, nom: 'Giulia Rossi', image: "/images/artiste2.jpg"},
+    {id: 2, nom: 'Marco Bianchi', image: "/images/artiste1.jpg"},
+    {id: 3, nom: 'Elena Ferraro', image: "/images/artiste3.jpg"},
   ];
 
   supprimerArtiste(index: number) {
