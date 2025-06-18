@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class Accueil {
 
+  showDescription = false;
+
+  afficheDescription() {
+      this.showDescription = !this.showDescription;
+    }
 }
