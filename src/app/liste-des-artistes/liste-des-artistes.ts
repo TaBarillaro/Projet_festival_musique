@@ -22,6 +22,7 @@ export class ListeDesArtistes {
   }
 
   ajouterArtiste(artiste: { nom: string; image: string }) {
+    // on calcule la longueur du tableau artistes pour prendre le dernier id et ajouter 1 pour le nouveau id
     const id = this.artistes.length ? Math.max(...this.artistes.map(a => a.id)) + 1 : 1;
     this.artistes.push({ id, nom: artiste.nom, image: artiste.image });
   }
