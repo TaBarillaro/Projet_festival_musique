@@ -1,5 +1,23 @@
-<p>artist-form works!</p>
-<form>
-    <label for="name">Nom: </label>
-    <!--<input id="name" type="text" [formAction]="nom">-->
+<form [formGroup]="artistForm" (ngSubmit)="ajouterArtiste()">
+    <div>
+        <label for="nom">Nom</label>
+        <input id="nom" formControlName="nom" type="text" />
+        @if (artistForm.controls['nom'].invalid && artistForm.controls['nom'].touched) {
+            <div style="color:red;">
+                Le nom est requis.
+            </div>
+        }
+    </div>
+
+    <div>
+        <label for="image">Chemin de l'image</label>
+        <input id="image" formControlName="image" type="text" />
+        @if (artistForm.controls['image'].invalid && artistForm.controls['image'].touched) {
+            <div style="color:red;">
+                Le chemin de l'image est requis.
+            </div>
+        }
+    </div>
+
+  <button type="submit" [disabled]="artistForm.invalid">Ajouter</button>
 </form>

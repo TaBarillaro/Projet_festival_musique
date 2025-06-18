@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ArtistForm } from '../artist-form/artist-form';
 
 
 @Component({
   selector: 'app-liste-des-artistes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ArtistForm],
   templateUrl: './liste-des-artistes.html',
   styleUrl: './liste-des-artistes.scss'
 })
@@ -18,5 +19,10 @@ export class ListeDesArtistes {
 
   supprimerArtiste(index: number) {
     this.artistes.splice(index, 1);
+  }
+
+  ajouterArtiste(artiste: { nom: string; image: string }) {
+    const id = this.artistes.length ? Math.max(...this.artistes.map(a => a.id)) + 1 : 1;
+    this.artistes.push({ id, nom: artiste.nom, image: artiste.image });
   }
 }

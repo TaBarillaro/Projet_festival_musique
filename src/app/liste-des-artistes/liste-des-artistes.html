@@ -5,6 +5,7 @@
   <title>Liste des Artistes</title>
 </head>
 <body>
+    <app-artist-form (artisteAjoute)="ajouterArtiste($event)"></app-artist-form>
     <h1>Liste des artistes</h1>
         <ul>
             @for (artiste of artistes; track artiste.id; let i = $index, e = $even) {
