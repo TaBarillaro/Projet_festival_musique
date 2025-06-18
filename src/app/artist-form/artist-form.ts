@@ -14,15 +14,15 @@ export class ArtistForm {
   @Output() artisteAjoute = new EventEmitter<{ nom: string, image: string }>();
 
   artistForm = new FormGroup({
-    nom: new FormControl('', Validators.required),
-    image: new FormControl('', Validators.required)
+    name: new FormControl('', Validators.required),
+    photo: new FormControl('', Validators.required)
   });
 
   ajouterArtiste() {
     if (this.artistForm.valid) {
       this.artisteAjoute.emit({
-        nom: this.artistForm.value.nom!,
-        image: this.artistForm.value.image!
+        nom: this.artistForm.value.name!,
+        image: this.artistForm.value.photo!
       });
       this.artistForm.reset();
     }

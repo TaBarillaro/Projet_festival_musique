@@ -38,20 +38,27 @@ export class ListeDesArtistes {
       });
     }
 
-    ajouterArtiste(artiste: { nom: string; image: string }) {
-    const id = this.artistes.length ? Math.max(...this.artistes.map(a => a.id)) + 1 : 1;
-    this.artistes.push({ id, nom: artiste.nom, image: artiste.image });
-  }
+    ajouterArtiste(data: { name: string; photo: string }) {
+      this.artisteService.ajouterArtiste(data).subscribe({
+        next: (newArtiste) => {
+          this.artistes.push(newArtiste);
+        },
+        error: (err) => {
+          console.error('Erreur lors de l\'ajout:', err);
+        }
+      });
+    }
 
-  supprimerArtiste(index: number) {
-    const artiste = this.artistes[index];
+    supprimerArtiste(index: number) {
+      const artiste = this.artistes[index];
 
-    this.artisteService.supprimerArtiste(artiste.id).subscribe({
-      next: () => this.artistes.splice(index, 1),
-      error: err => {
-        console.warn('Impossible de supprimer cet artiste :', err);
-        alert("Impossible de supprimer cet artiste (règle de l'API ?)");
-      }
-    });
-  }
+      this.artisteService.supprimerArtiste(artiste.id).subscribe({
+        next: () => {
+          this.artistes.splice(index, 1);
+        },
+        error: (err) => {
+          console.error('Erreur lors de la suppression:', err);
+        }
+      });
+    }
 }
