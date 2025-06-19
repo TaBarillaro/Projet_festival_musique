@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArtistForm } from '../artist-form/artist-form';
 import { Artiste, ArtistesWebService } from '../artistes-web';
+import { Artist } from "../artist/artist";
 
 
 @Component({
   selector: 'app-liste-des-artistes',
   standalone: true,
-  imports: [CommonModule, ArtistForm],
+  imports: [CommonModule, ArtistForm, Artist],
   templateUrl: './liste-des-artistes.html',
   styleUrl: './liste-des-artistes.scss'
 })

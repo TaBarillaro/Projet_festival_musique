@@ -1,12 +1,12 @@
-
-<app-artist-form (artisteAjoute)="ajouterArtiste($event)"></app-artist-form>
+<div>
+    <app-artist-form (artisteAjoute)="ajouterArtiste($event)"></app-artist-form>
+</div>
     
     @if (artisteSelectionne) {
-        <h1>L'artiste</h1>
-        <li>
+       <!-- <h1>L'artiste</h1>
             <p>{{ artisteSelectionne.name }}</p>
-            <img [src]="artisteSelectionne.photo" [alt]="artisteSelectionne.name" width="100" />
-        </li>
+            <img [src]="artisteSelectionne.photo" [alt]="artisteSelectionne.name" width="200" /> -->
+        <app-artist [artiste]="artisteSelectionne"></app-artist>
     } @else {
         <h1>Liste des artistes</h1>
         <ul>
@@ -22,9 +22,7 @@
             }
         </ul>
 
-                <!-- Nessun artista -->
         @if (artistes.length === 0) {
         <p>Aucun artiste à afficher.</p>
     }
-
 }

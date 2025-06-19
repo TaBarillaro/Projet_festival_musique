@@ -10,7 +10,6 @@ import { Artiste } from '../artistes-web';
   styleUrl: './artist.scss'
 })
 export class Artist {
-  //@Input() artiste!: Artiste;
   artiste = input.required<Artiste>();
 
 }
