@@ -13,7 +13,7 @@
             @for (artiste of artistes; track artiste.id; let i = $index) {
             <li>
                 <p>{{ artiste.name }}</p>
-                <img [src]="artiste.photo" [alt]="artiste.name" width="100" />
+                <img [src]="artiste.photo" [alt]="artiste.name" width="200" />
                 <button (click)="afficherDetail(artiste)">Voir détails</button>
                 <button style="background: red; color: white;" (click)="supprimerArtiste(i)">
                     Supprimer

@@ -19,6 +19,7 @@ const httpOptions = {
   })
 };
 
+// le service est dispo globalement dans l'app
 @Injectable({
   providedIn: 'root'
 })

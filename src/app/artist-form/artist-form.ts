@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ArtistForm {
 
-  @Output() artisteAjoute = new EventEmitter<{ name: string, photo: string }>();
+  artisteAjoute = output<{ name: string, photo: string }>();
 
   artistForm = new FormGroup({
     name: new FormControl('', Validators.required),
