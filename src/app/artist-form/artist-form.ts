@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ArtistForm {
 
-  @Output() artisteAjoute = new EventEmitter<{ nom: string, image: string }>();
+  @Output() artisteAjoute = new EventEmitter<{ name: string, photo: string }>();
 
   artistForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -21,8 +21,8 @@ export class ArtistForm {
   ajouterArtiste() {
     if (this.artistForm.valid) {
       this.artisteAjoute.emit({
-        nom: this.artistForm.value.name!,
-        image: this.artistForm.value.photo!
+        name: this.artistForm.value.name!,
+        photo: this.artistForm.value.photo!
       });
       this.artistForm.reset();
     }

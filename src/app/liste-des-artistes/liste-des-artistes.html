@@ -1,21 +1,21 @@
 
-    <app-artist-form (artisteAjoute)="ajouterArtiste($event)"></app-artist-form>
-    <h1>Liste des artistes</h1>
-        <ul>
-            @for (artiste of artistes; track artiste.id; let i = $index) {
-            <li>
-                <p>{{ artiste.nom }}</p>
-                <img [src]="artiste.image" [alt]="artiste.nom" width="100" />
-                <button style="background: red; color: white;" (click)="supprimerArtiste(i)">
-                    Supprimer
-                </button>
-            </li>
-            }
-        </ul>
+<app-artist-form (artisteAjoute)="ajouterArtiste($event)"></app-artist-form>
+<h1>Liste des artistes</h1>
+    <ul>
+        @for (artiste of artistes; track artiste.id; let i = $index) {
+        <li>
+            <p>{{ artiste.name }}</p>
+            <img [src]="artiste.photo" [alt]="artiste.name" width="100" />
+            <button style="background: red; color: white;" (click)="supprimerArtiste(i)">
+                Supprimer
+            </button>
+        </li>
+        }
+    </ul>
 
-        <!-- Nessun artista -->
-    @if (artistes.length === 0) {
-      <p>Aucun artiste à afficher.</p>
-    }
+            <!-- Nessun artista -->
+@if (artistes.length === 0) {
+<p>Aucun artiste à afficher.</p>
+}
 
 
