@@ -61,4 +61,10 @@ export class ListeDesArtistes {
         }
       });
     }
+
+    artisteSelectionne: Artiste | null = null;
+
+    afficherDetail(artiste: Artiste) {
+      this.artisteSelectionne = artiste;
+    }
 }

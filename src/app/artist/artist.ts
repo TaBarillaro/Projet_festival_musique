@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Artiste } from '../artistes-web';
 
 @Component({
   selector: 'app-artist',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './artist.html',
   styleUrl: './artist.scss'
 })
 export class Artist {
+  @Input() artiste!: Artiste;
 
 }
