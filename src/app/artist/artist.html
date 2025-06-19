@@ -1,9 +1,9 @@
 <h1>L'artiste</h1>
 
-@if (artiste) {
+@if (artiste()) {
 <div>
-    <h2>{{ artiste.name }}</h2>
-    <img [src]="artiste.photo" [alt]="artiste.name" width="200">
+    <h2>{{ artiste().name }}</h2>
+    <img [src]="artiste().photo" [alt]="artiste().name" width="200">
 </div>
 } @else {
     <p>Aucun artiste sélectionné</p>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Artiste } from '../artistes-web';
 
@@ -10,6 +10,7 @@ import { Artiste } from '../artistes-web';
   styleUrl: './artist.scss'
 })
 export class Artist {
-  @Input() artiste!: Artiste;
+  //@Input() artiste!: Artiste;
+  artiste = input.required<Artiste>();
 
 }
