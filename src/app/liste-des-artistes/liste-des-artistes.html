@@ -1,6 +1,18 @@
 <div>
     <app-artist-form (artisteAjoute)="ajouterArtiste($event)"></app-artist-form>
 </div>
+
+    @if (successMessage) {
+        <div class="message-success" style="color: green">
+            {{ successMessage }}
+        </div>
+    }
+
+    @if (errorMessage) {
+        <div class="message-error" style="color: rgb(121, 31, 31)">
+            {{ errorMessage }}
+        </div>
+    }
     
     @if (artisteSelectionne) {
        <!-- <h1>L'artiste</h1>

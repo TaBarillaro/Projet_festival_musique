@@ -1,6 +1,7 @@
 import { Component, output } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { error } from 'console';
 
 @Component({
   selector: 'app-artist-form',
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './artist-form.scss'
 })
 export class ArtistForm {
+
 
   artisteAjoute = output<{ name: string, photo: string }>();
 
@@ -24,6 +26,7 @@ export class ArtistForm {
         name: this.artistForm.value.name!,
         photo: this.artistForm.value.photo!
       });
+
       this.artistForm.reset();
     }
   }

@@ -31,6 +31,9 @@ export class ListeDesArtistes {
 
     artistes: Artiste[] = [];
 
+    successMessage: string = '';
+    errorMessage: string = '';
+
     constructor(private artisteService: ArtistesWebService) {}
 
     ngOnInit() {
@@ -43,9 +46,13 @@ export class ListeDesArtistes {
       this.artisteService.ajouterArtiste(data).subscribe({
         next: (newArtiste) => {
           this.artistes.push(newArtiste);
+          this.successMessage = "L'artiste a bien été ajouté";
+          this.errorMessage = '';
         },
         error: (err) => {
           console.error('Erreur lors de l\'ajout:', err);
+          this.errorMessage = err.error?.message || 'Erreur serveur inconnue';
+          this.successMessage = '';
         }
       });
     }

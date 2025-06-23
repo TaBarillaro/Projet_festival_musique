@@ -3,8 +3,8 @@
         <label for="name">Nom</label>
         <input id="name" formControlName="name" type="text" />
         @if (artistForm.controls['name'].invalid && artistForm.controls['name'].touched) {
-            <div style="color:red;">
-                Le nom est requis.
+            <div style="color:red;" class="error-name">
+                Le nom est obligatoire
             </div>
         }
     </div>
@@ -13,11 +13,11 @@
         <label for="photo">Chemin de l'image</label>
         <input id="photo" formControlName="photo" type="text" />
         @if (artistForm.controls['photo'].invalid && artistForm.controls['photo'].touched) {
-            <div style="color:red;">
-                Le chemin de l'image est requis.
+            <div style="color:red;" class="error-photo">
+                La photo est obligatoire
             </div>
         }
     </div>
 
-  <button type="submit" [disabled]="artistForm.invalid">Ajouter</button>
+  <button type="submit">Ajouter</button>
 </form>
