@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideClientHydration(withEventReplay()),
     provideHttpClient(
-      // pour utuiliser la fetch native du browser au lieu de XML
+      // pour utiliser la fetch native du browser au lieu de XML
       withFetch()
     )
   ]
