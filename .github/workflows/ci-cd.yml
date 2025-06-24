@@ -26,7 +26,7 @@ jobs:
       run: npm run build 
 
     - name: Build Docker image
-      run: docker build -t projet-festival-musique:latest .
+      run: docker build -t projet_festival_musique:latest .
 
     - name: Start Angular app
       run: npm run start &   # parte il server Angular in background
