@@ -25,6 +25,9 @@ jobs:
     - name: Build Angular app
       run: npm run build 
 
+    - name: Build Docker image
+      run: docker build -t projet-festival-musique:latest .
+
     - name: Start Angular app
       run: npm run start &   # parte il server Angular in background
       # se usi Angular CLI serve avvia il server sul 4200 di default
