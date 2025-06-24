@@ -23,7 +23,7 @@ jobs:
       run: npm install
 
     - name: Build Angular app
-      run: npm run build -- --configuration production
+      run: npm run build 
 
     - name: Start Angular app
       run: npm run start &   # parte il server Angular in background
