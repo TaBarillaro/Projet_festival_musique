@@ -1,0 +1,39 @@
+name: CI/CD Angular + Cypress
+
+on:
+    push: 
+        branches: [dev, main]
+    pull_request: 
+        branches: [dev, main]
+jobs:
+    
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Use Node.js 18
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Angular app
+      run: npm run build -- --configuration production
+
+    - name: Start Angular app
+      run: npm run start &   # parte il server Angular in background
+      # se usi Angular CLI serve avvia il server sul 4200 di default
+
+    - name: Wait for server to start
+      run: |
+        npx wait-on http://localhost:4200
+
+    - name: Run Cypress tests
+      run: npm run cypress:run
+      env:
+        CI: true
