@@ -47,6 +47,8 @@ describe('Tests sur artistes', () => {
 
     cy.contains('Ajouter').click()
 
+    cy.reload()
+
     cy.contains(validArtiste.name).should('exist')
 
   })
