@@ -1,0 +1,73 @@
+name: CI/CD Angular + Cypress + Docker Deploy
+
+on:
+  push:
+    branches: [dev, main]
+  pull_request:
+    branches: [dev, main]
+
+jobs:
+  # 1️⃣ First job: build + test
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npx ng build
+
+      - name: Start Angular app (in background)
+        run: npm run start &
+      
+      - name: Wait for Angular server to be ready
+        run: npx wait-on http://localhost:4200
+
+      - name: Run Cypress tests
+        run: npm run cypress:run
+        env:
+          CI: true
+
+  # 2️⃣ Second job: build and push on GHCR (only for main)
+  docker-publish:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: ng build --configuration production
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/projet-festival-musique:latest .
+
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/projet-festival-musique:latest
