@@ -31,7 +31,7 @@ describe('Tests sur artistes', () => {
   // cy.get('.message-error') 
   //   .and('contain.text', 'Erreur serveur inconnue')
     
-  })
+  // })
 
   // test ajouter un artiste
   it('Ajouter un artiste valide', () => {
